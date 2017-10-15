@@ -9,7 +9,8 @@
 import re
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
-from Youtube_downloader import Youtube_downloader
+#from Youtube_downloader import Youtube_downloader
+import os
 
 class Dc_downloader:
 
@@ -31,6 +32,10 @@ class Dc_downloader:
 			pass
 		elif self.dtype == 2:
 			# Process direct downloads here
+			try:
+				os.system("wget " + self.dlink)
+			except:
+				print("no page found")
 			pass
 		elif self.dtype == 3:
 			# Process anime downloads here
@@ -63,9 +68,9 @@ class Dc_downloader:
 
 def main():
 	# TODO implement command line parser and get input from user
-	dlink = "http://www.youtube.com/watch?v=Dqzsu6PmkTw"
-	dtype = 0
-	dname = "Google chrome"
+	dlink = "http://www.tutorialspoint.com/python/python_tutorial.pdf"
+	dtype = 2
+	dname = "Gpythoo"
 	download_link = dlink
 	dowload_type = dtype
 	download_name = dname

@@ -9,6 +9,7 @@
 import re
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+from Youtube_downloader import Youtube_downloader
 
 class Dc_downloader:
 
@@ -20,12 +21,16 @@ class Dc_downloader:
 
 	def process_download(self):
 		# Check if dlink exists
-		if self.dlink:
-			self.direct_download()
-			return
+		#if not self.dtype:
+		#	self.direct_download()
+		#	return
 		# Process dtype here
 		if self.dtype == 0:
 			# Process youtube downloads here
+			print ("check")
+			print (self.dlink)
+			youtube_downloader = Youtube_downloader(self.dlink)
+			youtube_downloader.download()
 			pass
 		elif self.dtype == 1:
 			# Process torrent downloads here
@@ -64,8 +69,8 @@ class Dc_downloader:
 
 def main():
 	# TODO implement command line parser and get input from user
-	dlink = ""
-	dtype = 5
+	dlink = "http://www.youtube.com/watch?v=Dqzsu6PmkTw"
+	dtype = 0
 	dname = "Google chrome"
 	download_link = dlink
 	dowload_type = dtype
